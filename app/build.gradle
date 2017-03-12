@@ -31,7 +31,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
-            shrinkResources true
+//            shrinkResources true  （minifyEnabled false  包含 此行配置，加上则报错）
             signingConfig signingConfigs.release
             applicationVariants.all { variant ->
                 def deploy_type = variant.buildType.name
