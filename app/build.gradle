@@ -11,6 +11,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {//签名的配置
+        release {
+            storeFile file("android_test.jks")
+            storePassword '123456'
+            keyAlias 'android_test'
+            keyPassword '123456'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,14 +41,6 @@ android {
         }
     }
 
-    signingConfigs {//签名的配置
-        release {
-            storeFile file("android_test.jks")
-            storePassword '123456'
-            keyAlias 'android_test'
-            keyPassword '123456'
-        }
-    }
 }
 
 dependencies {
