@@ -38,7 +38,8 @@ android {
                 if (deploy_type.endsWith('release')) {  //如果是release版本
                     variant.outputs.each { output -> def outputFile = output.outputFile
                         if (outputFile != null && outputFile.name.endsWith('.apk')) {  //查找所有的apk
-                            def fileName = "MIUI Purify_${releaseTime()}_${defaultConfig.versionName}.apk"  //重新定义apk的名称
+//                            def fileName = "MIUI Purify_${releaseTime()}_${defaultConfig.versionName}.apk"  //重新定义apk的名称
+                            def fileName = "release_test.apk"  //重新定义apk的名称
                             output.outputFile = new File(outputFile.parent, fileName)  //outputFile.parent参数可以改成你你想要的发布路径
                         }
                     }
