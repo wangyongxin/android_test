@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+def releaseTime() {
+    // return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC")) //年月日
+    return new Date().format("yyyyMMdd HH-mm-ss", TimeZone.getTimeZone("GMT+8:00")) //年月日时分秒
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -29,7 +34,8 @@ android {
             shrinkResources true
             signingConfig signingConfigs.release
             applicationVariants.all { variant ->
-                if (variant.buildType.name.equals('release')) {  //如果是release版本
+                def deploy_type = variant.buildType.name
+                if (deploy_type.endsWith('release')) {  //如果是release版本
                     variant.outputs.each { output -> def outputFile = output.outputFile
                         if (outputFile != null && outputFile.name.endsWith('.apk')) {  //查找所有的apk
                             def fileName = "MIUI Purify_${releaseTime()}_${defaultConfig.versionName}.apk"  //重新定义apk的名称
@@ -54,7 +60,3 @@ dependencies {
 }
 
 
-def releaseTime() {
-    // return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC")) //年月日
-    return new Date().format("yyyyMMdd HH-mm-ss", TimeZone.getTimeZone("GMT+8:00")) //年月日时分秒
-}
