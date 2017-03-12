@@ -14,7 +14,7 @@ android {
 
     signingConfigs {//签名的配置
         release {
-            storeFile file("android_test.jks")
+            storeFile file("../android_test.jks")
             storePassword '123456'
             keyAlias 'android_test'
             keyPassword '123456'
